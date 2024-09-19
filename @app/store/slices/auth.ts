@@ -1,4 +1,4 @@
-import { updateProfile, UserInfo } from 'firebase/auth'
+import { UserInfo } from 'firebase/auth'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { auth } from '../../config/firebase'
 import { parseFirebaseErrFromCodeToText } from '@/@app/utils/error'
@@ -6,7 +6,6 @@ import {
     ForgotPasswordParams,
     LoginParams,
     RegisterParams,
-    UpdateProfileParams,
 } from '@/@app/models/auth'
 
 type AuthState = {

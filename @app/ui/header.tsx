@@ -24,6 +24,9 @@ import { useSelector } from 'react-redux'
 import { authSlice, logOutUser, RootState, useAppDispatch } from '../store'
 import { promptSuccess } from './prompt'
 
+import { collection, doc, writeBatch } from 'firebase/firestore'
+import { db } from '../config/firebase'
+
 const NavLinks: React.FC<{
     links: {
         id: string
@@ -37,7 +40,6 @@ const NavLinks: React.FC<{
         <Group>
             {props.links.map(link => {
                 return (
-                    // eslint-disable-next-line @next/next/link-passhref
                     <Link
                         href={link.href}
                         key={link.id}
@@ -171,6 +173,7 @@ const Header = () => {
                     }}
                     visible={status === 'processing'}
                 />
+
                 <Group position="apart">
                     <CJLogo />
                     <Group>

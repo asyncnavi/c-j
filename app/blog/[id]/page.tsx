@@ -57,15 +57,13 @@ const SingleBlogPost = () => {
                 <Avatar></Avatar>
                 <Box>
                     <Text>{data?.author}</Text>
-                    <Text color="dimmed" size="sm">
-                        {parseTimeToReadableString(
-                            `${data?.updatedAt.toDate().toString()}`,
-                        )}
-                    </Text>
                 </Box>
             </Group>
             <Image alt="demo-img" src={data?.coverImage} w="100%" />
-            <Output data={parseContentToJSON()} />
+            <div
+                dangerouslySetInnerHTML={{ __html: data?.content }} // Note the double curly braces
+            />
+
             <Divider variant="dashed" />
             <ReactionsSegment />
             <SavesSegment shareModalHandler={open} />
@@ -74,4 +72,3 @@ const SingleBlogPost = () => {
 }
 
 export default SingleBlogPost
-
